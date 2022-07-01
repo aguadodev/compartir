@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sobre el Proyecto{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Sobre el Proyecto</h1>
+
+    <p>¿De qué trata el proyecto? ¿Cuáles son sus objetivos? ¿Qué ofrece? ¿Quiénes forman parte? ¿Qué lo hace diferente?</p>
+    <p><a href="{{ path('app_index') }}">Volver a la Página de Inicio</a><p>
+</div>
+{% endblock %}
