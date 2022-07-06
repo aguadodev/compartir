@@ -1,19 +1,74 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<title>{% block title %}Editorial by HTML5 UP{% endblock %}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		{% block stylesheets %}
+		{{ encore_entry_link_tags('app') }}
+		<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+		{% endblock %}
+	</head>
+	<body class="is-preload">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="{{ path('app_index') }}" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+								</header>							
+
+							<!-- Content -->
+								<section>
+									{% block body %}
+
+									{% endblock %}
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									{{ include('_menu.html.twig') }}
+								</nav>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2022. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+		<!-- Scripts -->
+			<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+			<script src="{{ asset('assets/js/browser.min.js') }}"></script>
+			<script src="{{ asset('assets/js/breakpoints.min.js') }}"></script>
+			<script src="{{ asset('assets/js/util.js') }}"></script>
+			<script src="{{ asset('assets/js/main.js') }}"></script>
+		{% endblock %}
+
+	</body>
 </html>

@@ -1,0 +1,12 @@
+<ul>
+    <li><a href="{{ path('app_index') }}">Inicio</a></li>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li><a href="#"><strong>{{ app.user.email }}</strong></a></li>
+        <li><a href="{{ path('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ path('login') }}">Login</a></li>
+        <li><a href="{{ path('app_register') }}">Registro</a></li>
+    {% endif %}	
+    <li><a href="{{ path('app_about') }}">About</a></li>										
+    <li><a href="{{ path('app_terms') }}">Términos de uso</a></li>										
+</ul>
