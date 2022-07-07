@@ -117,6 +117,10 @@ class ResetPasswordController extends AbstractController
             );
 
             $user->setPassword($encodedPassword);
+
+            // Actualiza la fecha de modificación
+            $user->setUpdatedAt(new \DateTimeImmutable());
+
             $this->entityManager->flush();
 
             // The session is cleaned up after the password has been changed.
