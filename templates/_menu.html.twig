@@ -1,7 +1,8 @@
 <ul>
     <li><a href="{{ path('app_index') }}">Inicio</a></li>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <li><a href="#"><strong>{{ app.user.email }}</strong></a></li>
+        <li><a href="{{ path('app_profile_show') }}">
+            <strong>{{ app.user.username ? app.user.username : app.user.email }}</strong></a></li>
         <li><a href="{{ path('logout') }}">Logout</a></li>
     {% else %}
         <li><a href="{{ path('login') }}">Login</a></li>

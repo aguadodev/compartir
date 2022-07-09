@@ -45,13 +45,8 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('from@example.com', 'Proyecto Compartir Symfony'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+            $this->sendEmailConfirmation($user);
+            
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('app_index');
@@ -60,6 +55,17 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    public function sendEmailConfirmation(User $user){
+        // generate a signed url and email it to the user
+        $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+        (new TemplatedEmail())
+            ->from(new Address('from@example.com', 'Proyecto Compartir Symfony'))
+            ->to($user->getEmail())
+            ->subject('Please Confirm your Email')
+            ->htmlTemplate('registration/confirmation_email.html.twig')
+        );        
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
