@@ -7,4 +7,6 @@
 /public/bundles/
 /var/
 /vendor/
+/public/images/profile_photos/*
+!/public/images/profile_photos/default_profile_photo.PNG
 ###< symfony/framework-bundle ###

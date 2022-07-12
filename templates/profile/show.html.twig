@@ -12,6 +12,17 @@
         </div>
     {% endfor %}
 
+    {% if user.photoFilename %}
+        <p><a href="{{ asset('images/profile_photos/' ~ user.photoFilename) }}">
+        <img height="200" src="{{ asset('images/profile_photos/' ~ user.photoFilename) }}">
+        </a></p>
+    {% else %}
+        <p><a href="{{ path('app_profile_edit') }}">
+        <img width="200" src="{{ asset('images/profile_photos/default_profile_photo.PNG') }}">
+        </a></p>    
+    {% endif %}
+
+
     <table class="table">
         <tbody>
             <tr>

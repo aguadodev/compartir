@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Email</th>
+                <th>Photo</th>
                 <th>Roles</th>
                 {#<th>Password</th>#}
                 <th>IsVerified</th>
@@ -25,6 +26,18 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
+                <td>
+                {% if user.photoFilename %}
+                    <a href="{{ asset('images/profile_photos/' ~ user.photoFilename) }}">
+                    <img height="50" src="{{ asset('images/profile_photos/' ~ user.photoFilename) }}">
+                    </a>
+                {% else %}
+                    <a href="{{ asset('images/profile_photos/default_profile_photo.PNG') }}">
+                    <img width="50" src="{{ asset('images/profile_photos/default_profile_photo.PNG') }}">
+                    </a>   
+                {% endif %}
+                
+                </td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 {#<td>{{ user.password }}</td>#}

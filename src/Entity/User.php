@@ -45,6 +45,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $enabled;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $photoFilename;
+
     public function __construct()
     {
         // Inicializa la fecha creación al momento actual
@@ -193,6 +196,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getPhotoFilename(): ?string
+    {
+        return $this->photoFilename;
+    }
+
+    public function setPhotoFilename(?string $photoFilename): self
+    {
+        $this->photoFilename = $photoFilename;
 
         return $this;
     }
