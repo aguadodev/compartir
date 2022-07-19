@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Form\ProfileType;
-use App\Security\EmailVerifier;
 use App\Repository\UserRepository;
 use App\Controller\RegistrationController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +34,6 @@ class ProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $photoFile = $form->get('photo')->getData();
-            //dd($photoFile);
             // this condition is needed because field is not required
             // so file must be processed only when a file is uploaded
             if ($photoFile) {
@@ -55,6 +53,7 @@ class ProfileController extends AbstractController
                     // ... handle exception if something happens during file upload
                     $this->addFlash('error', 'Error al subir la foto de perfil');
                 }
+                
                 // Borra el fichero de imagen de perfil anterior si existe
                 if ($user->getPhotoFilename()) {
                     $oldPhoto = $user->getPhotoFilename();
@@ -63,7 +62,6 @@ class ProfileController extends AbstractController
                         unlink($oldPhotoPath);
                     }
                 }
-                //unlink($this->getParameter('profile_photos_directory') . '/' . $user->getPhotoFilename());
 
                 // updates the property to store the file name instead of its contents
                 $user->setPhotoFilename($newFilename);
